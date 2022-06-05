@@ -4,6 +4,9 @@
   <a href="https://jitpack.io/#mustafayigitt/validator">
     <img src="https://jitpack.io/v/mustafayigitt/validator.svg" />
   </a>
+  <a href="https://opensource.org/licenses/Apache-2.0">
+    <img alt="License" src="https://img.shields.io/badge/License-Apache%202.0-blue.svg"/>
+  </a>
   <p>
     Validate your inputs by <strong>notify types</strong>
   </p> 
