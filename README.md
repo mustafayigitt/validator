@@ -1,18 +1,41 @@
-<h1 align=center>validator</h1>
+<h1 align=center>Validator</h1>
 
 <div align="center">
   <a href="https://jitpack.io/#mustafayigitt/validator">
     <img src="https://jitpack.io/v/mustafayigitt/validator.svg" />
   </a>
-  <p> Validate your inputs <strong>notify based</strong> </p>
+  <p>
+    Validate your inputs by <strong>notify types</strong>
+  </p> 
 </div>
 
 <p align=center>
   <img src="https://user-images.githubusercontent.com/43048105/172043553-72a15316-f81d-496f-ad21-eccadc42c473.gif" width="250">
 </p>
 
-````kotlin
+## Import [![](https://jitpack.io/v/mustafayigitt/validator.svg)](https://jitpack.io/#mustafayigitt/validator)
 
+- **project level**
+````gradle
+allprojects {
+ repositories {
+ // ...
+   maven { url 'https://jitpack.io' }
+  }
+}
+````
+
+- **module level**
+````gradle
+dependencies {
+    implementation 'com.github.mustafayigitt:validator:Tag'
+}
+````
+
+## How to use
+
+````kotlin
+// Create a validator with Builder pattern
 val emailValidator = Validator.Builder()
     .addRules(
         ValidatableRule.Email("Enter valid mail address"),
@@ -37,3 +60,32 @@ val emailValidator = Validator.Builder()
     }
     .build()
 ````
+
+### Or you can write a custom ValidatableRule
+````kotlin
+class PasswordConfirmRule(
+    override val errorMessage: String,
+    override val notifyType: NotifyType,
+    val originalInputGetter: () -> String
+) : BaseValidatableRule(
+    errorMessage = errorMessage,
+    notifyType = notifyType,
+    rule = { it == originalInputGetter.invoke() }
+)
+
+// Usage
+val passwordConfirmValidator = Validator.Builder()
+    .addRules(
+        PasswordConfirmRule(
+            errorMessage = "Passwords does not match",
+            notifyType = NotifyType.ON_VALUE_CHANGE,
+            originalInputGetter = { mBinding.txtInputPassword.editText?.text.toString() },
+            )
+        )
+        ...
+````
+
+
+
+
+
