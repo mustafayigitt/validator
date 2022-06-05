@@ -8,5 +8,6 @@ package com.mustafayigit.validator.base
 
 open class BaseValidatableRule (
     open val errorMessage: String,
+    open val notifyType: NotifyType,
     open val rule: (input: String) -> Boolean,
 )

@@ -1,6 +1,7 @@
 package com.mustafayigit.validator
 
 import com.mustafayigit.validator.base.BaseValidatableRule
+import com.mustafayigit.validator.base.NotifyType
 
 /**
  * Created by Mustafa Yiğit on 26/05/2022
@@ -17,16 +18,16 @@ interface IValidatable {
     // rule list
     val rules: MutableList<BaseValidatableRule>
 
-    var onValidation: (Boolean, String?) -> Unit
+    var onValidation: (Boolean, String?, NotifyType) -> Unit
 
     // add rule and result action
     fun addRules(vararg rules: BaseValidatableRule) {
         this.rules.addAll(rules)
     }
 
-    fun isValid(): Boolean
+    fun isValid(notifyType: NotifyType = NotifyType.ON_VALUE_CHANGE): Boolean
 
-    fun validate(){
-        isValid()
+    fun validate(notifyType: NotifyType): Boolean {
+        return isValid(notifyType)
     }
 }
