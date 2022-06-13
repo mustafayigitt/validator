@@ -7,6 +7,9 @@
   <a href="https://opensource.org/licenses/Apache-2.0">
     <img alt="License" src="https://img.shields.io/badge/License-Apache%202.0-blue.svg"/>
   </a>
+  <a href="https://mustafayigitt.medium.com/validator-rule-based-validation-library-in-android-2058e8d6c27">
+    <img alt="Medium" src="https://skydoves.github.io/badges/Story-Medium.svg"/>
+  </a>
   <p>
     Validate your inputs by <strong>notify types</strong>
   </p> 
