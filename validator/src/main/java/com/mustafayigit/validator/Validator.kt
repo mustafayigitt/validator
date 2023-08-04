@@ -36,7 +36,6 @@ class Validator(
     override val rules: MutableList<BaseValidatableRule> = mutableListOf()
 
     override fun isValid(notifyType: NotifyType): Boolean {
-        currentErrorText = null
         val filteredRules = rules.filter { it.notifyType == notifyType }
 
         for (rule in filteredRules) {
